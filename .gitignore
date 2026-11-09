@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+password
+*.local

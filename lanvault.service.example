@@ -1,0 +1,20 @@
+[Unit]
+Description=LanVault file server
+
+[Service]
+WorkingDirectory=%h/projects/lanvault
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/usr/bin/python3 %h/projects/lanvault/lanvault.py \
+  --root %h \
+  --bind 0.0.0.0 \
+  --port 8989 \
+  --user alice \
+  --password-file %h/.config/lanvault/password \
+  --tls-cert %h/.config/lanvault/cert.pem \
+  --tls-key %h/.config/lanvault/key.pem
+Restart=on-failure
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
